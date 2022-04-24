@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkly-agent-deployment
+  labels:
+    app: checkly-agent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: checkly-agent
+  template:
+    metadata:
+      labels:
+        app: checkly-agent
+    spec:
+      containers:
+        - name: checkly-agent
+          image: ghcr.io/checkly/agent:latest
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: checklysecret
+                  key: API_KEY
