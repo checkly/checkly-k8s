@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: checkly-agent-deployment
+  name: checkly-agent
   labels:
     app: checkly-agent
 spec:
