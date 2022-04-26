@@ -6,6 +6,10 @@ metadata:
     app: checkly-agent
 spec:
   replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: checkly-agent
@@ -23,3 +27,4 @@ spec:
                 secretKeyRef:
                   name: checklysecret
                   key: API_KEY
+      terminationGracePeriodSeconds: 35
