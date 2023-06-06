@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: checkly-agent-container
-    image: ghcr.io/checkly/agent:latest
+    image: checkly/agent:latest
     env:
     - name: API_KEY
       valueFrom:
