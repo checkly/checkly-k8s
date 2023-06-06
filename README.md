@@ -18,7 +18,7 @@ Find the Helm chart in the `/helm-cart` directory. The Helm chart does two basic
 
 
 Assuming you have Helm set up to point at your K8S cluster, run it with the following command, making sure you 
-**replace the `apikey="pl_..."` with your Checkly Private Location API key.
+**replace the `apikey="pl_..."` with your Checkly Private Location API key**.
 
 ```bash
 helm install checkly-agent --set apiKey="pl_..."  ./helm-chart
