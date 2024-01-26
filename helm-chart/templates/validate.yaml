@@ -22,3 +22,18 @@ Verfiy if .Values.apiKeySecret.create is false then
 {{- fail "apiKeySecret.create is set to false and .apiKeySecret.name must be set. See values.yaml for details" -}}
 {{- end }}
 
+{{/*
+Check if .Values.apiKeySecret.create is true but
+.Values.apiKeySecret.name is defined
+*/}}
+{{- if and .Values.apiKeySecret.create .Values.apiKeySecret.name }}
+{{- fail "apiKeySecret.create is set to true and .apiKeySecret.name is set. name cannot be set when create = true" -}}
+{{- end }}
+
+{{/*
+Check if .Values.apiKeySecret.create is false but
+.Values.apiKeySecret.apiKey is defined
+*/}}
+{{- if and (not .Values.apiKeySecret.create) .Values.apiKeySecret.apiKey }}
+{{- fail "apiKeySecret.create is set to false and .apiKeySecret.apiKey is also set. apiKey cannot be set when create = false" -}}
+{{- end }}
