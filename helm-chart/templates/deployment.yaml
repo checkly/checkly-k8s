@@ -38,7 +38,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: apiKey
+                  {{- if .Values.apiKeySecret.create }}
                   name: {{ .Release.Name }}-auth
+                  {{- else if and .Values.apiKeySecret.name (not .Values.apiKeySecret.create) }}
+                  name: {{ .Values.apiKeySecret.name }}
+                  {{- end }}
+
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
