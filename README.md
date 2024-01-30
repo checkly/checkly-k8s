@@ -29,7 +29,7 @@ Instead of setting `apiKeySecret.apiKey` you can also choose an existing secret 
 
 ```
 apiKeySecret
-    create: true
+    create: false
     name: <NAME_OF_EXISTING_SECRET>
 ```
 
@@ -37,7 +37,7 @@ or create the secret with `extraManifests`
 
 ```
 apiKeySecret
-    create: true
+    create: false
     name: <NAME_OF_SECRET_CREATED_BY_EXTRAMANIFEST>
 
 extraManifests:
