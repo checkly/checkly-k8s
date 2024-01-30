@@ -22,7 +22,7 @@ serviceAccount:
 # -- your secret defined in your extraManifests.
 apiKeySecret:
   create: true
-  apiKey: replace_me
+  apiKey: ""
 
 podAnnotations: {}
 

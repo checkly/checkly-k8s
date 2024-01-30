@@ -21,7 +21,34 @@ Assuming you have Helm set up to point at your K8S cluster, run it with the foll
 **replace the `apikey="pl_..."` with your Checkly Private Location API key**.
 
 ```bash
-helm install checkly-agent --set apiKey="pl_..."  ./helm-chart
+helm install checkly-agent --set apiKeySecret.apiKey="pl_..."  ./helm-chart
+```
+
+### Alternative ways to set Agent API Key
+Instead of setting `apiKeySecret.apiKey` you can also choose an existing secret with the following options 
+
+```
+apiKeySecret
+    create: true
+    name: <NAME_OF_EXISTING_SECRET>
+```
+
+or create the secret with `extraManifests`
+
+```
+apiKeySecret
+    create: true
+    name: <NAME_OF_SECRET_CREATED_BY_EXTRAMANIFEST>
+
+extraManifests:
+    - apiVersion: external-secrets.io/v1beta1
+      kind: ExternalSecret
+      metadata:
+      name: checkly-agent-secret
+      namespace: monitoring
+      spec:
+      target:
+        name: my-checkly-secret-in-aws
 ```
 
 ## Kubernetes manifests
@@ -50,3 +77,5 @@ Create a deployment of Checkly agent pods (default: 2). Connects to the private 
 ## [checklyNamespace.yaml](https://github.com/checkly/checkly-k8s/blob/main/checklyNamespace.yaml)
 
 Optional - Creates a namespace for the Checkly agent resources.
+
+
