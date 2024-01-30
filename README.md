@@ -77,5 +77,3 @@ Create a deployment of Checkly agent pods (default: 2). Connects to the private 
 ## [checklyNamespace.yaml](https://github.com/checkly/checkly-k8s/blob/main/checklyNamespace.yaml)
 
 Optional - Creates a namespace for the Checkly agent resources.
-
-
