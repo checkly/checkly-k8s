@@ -56,24 +56,24 @@ extraManifests:
 If you are not using Helm, you can also use these K8S manifest files to create your preferred cluster setup for the Checkly
 Agent.
 
-## [agentSecret.yaml](https://github.com/checkly/checkly-k8s/blob/main/agentSecret.yaml)
+## [agentSecret.yaml](https://github.com/checkly/checkly-k8s/blob/main/k8s-manifests/agent-secret.yaml)
 
 Creates a secret containing the API key your agents use to connect to the private location. Useful if you want to obfuscate 
 the key so others can't see it with the `kubectl describe pod` command. The pod and deployment manifests are configured 
 to use this secret.
 
-## [agentPod.yaml](https://github.com/checkly/checkly-k8s/blob/main/agentPod.yaml)
+## [agentPod.yaml](https://github.com/checkly/checkly-k8s/blob/main/k8s-manifests/agent-pod.yaml)
 
 Creates a single pod running the Checkly agent. Connects to the Private Location using the API key specified in 
 [agentSecret.yaml](https://github.com/checkly/checkly-k8s/blob/main/agentSecret.yaml). Uses the 
 [latest image](https://github.com/checkly/checkly-lambda-runners/pkgs/container/agent).
 
-## [agentDeployment.yaml](https://github.com/checkly/checkly-k8s/blob/main/agentDeployment.yaml)
+## [agentDeployment.yaml](https://github.com/checkly/checkly-k8s/blob/main/k8s-manifests/agent-deployment.yaml)
 
 Create a deployment of Checkly agent pods (default: 2). Connects to the private location using the API key specified in 
 [agentSecret.yaml](https://github.com/checkly/checkly-k8s/blob/main/agentSecret.yaml). Uses the 
 [latest image](https://github.com/checkly/checkly-lambda-runners/pkgs/container/agent). Rolling updates are enabled.
 
-## [checklyNamespace.yaml](https://github.com/checkly/checkly-k8s/blob/main/checklyNamespace.yaml)
+## [checklyNamespace.yaml](https://github.com/checkly/checkly-k8s/blob/main/k8s-manifests/checkly-namespace.yaml)
 
 Optional - Creates a namespace for the Checkly agent resources.
