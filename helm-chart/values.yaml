@@ -1,8 +1,8 @@
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: checkly/agent
-  pullPolicy: Always
+  pullPolicy: []
 
 imagePullSecrets: []
 
@@ -12,44 +12,36 @@ serviceAccount:
 # -- Configures secret for agent API Key
 #
 # -- If you already have a secret with the Key, set `create` to
-# -- false and set the `name`` value to the name of your secret.
+# -- true and set the `name`` value to the name of your secret.
 #
 # -- If you don't have a secret, set `create` to true
 # -- and set the `apiKey`` value to your Key.
 #
 # -- You can also create a secret yourself via extraManifests[].
-# -- Set `create` to false and set `name` to the name of 
+# -- Set `create` to true and set `name` to the name of 
 # -- your secret defined in your extraManifests.
 apiKeySecret:
   create: true
-  apiKey: ""
+  apiKey: []
 
-podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext: []
 
-securityContext: {}
+securityContext: []
 
 service:
-  type: ClusterIP
-  port: 80
+  type: []
+  port: []
 
 ingress:
-  enabled: false
+  enabled: true
 
-resources: {}
+resources: {1000}
 
 autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 80
+  enabled: true
+  minReplicas: 0
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 265
 
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-extraManifests: []
