@@ -1,3 +1,5 @@
+# ⚠️ This repo is deprecated, please use https://github.com/checkly/helm-charts
+
 # Checkly Agent Kubernetes resources
 
 This repo contains a Helm chart and a few example Kubernetes manifests that can be used to run the Checkly Agent for your
